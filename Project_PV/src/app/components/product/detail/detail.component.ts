@@ -49,6 +49,7 @@ export class DetailComponent implements OnInit{
       let id = data['id'];
       this.productService.getIdProductDetail(id).subscribe((item: Products) => {
         this.showProduct = item;
+        console.log(this.showProduct['updatedAt'])
       })
     })
   }

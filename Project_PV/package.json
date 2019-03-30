@@ -25,6 +25,7 @@
     "lodash.find": "^4.6.0",
     "lodash.unzip": "^3.4.0",
     "lodash.unzipwith": "^4.3.0",
+    "moment": "^2.24.0",
     "ngx-chips": "^2.0.0-beta.0",
     "ngx-indexed-db": "^2.0.5",
     "ngx-pagination": "^3.2.1",

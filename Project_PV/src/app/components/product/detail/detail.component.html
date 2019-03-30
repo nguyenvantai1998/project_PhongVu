@@ -96,7 +96,7 @@
           </div>
 
           <div class="col-md-5">
-            Thời gian còn lại: {{showProduct.updatedAt - showProduct.createdAt}} ngày
+            Ngày đăng: {{ showProduct.updatedAt | date : "dd/MM/yyyy" }}
           </div>
         </div>
 
@@ -105,20 +105,20 @@
             <tbody>
               <tr>
                 <td class="col-md-3">Giá bán lẻ</td>
-                <td><a href="">{{showProduct.price | currency:' ':'symbol':'2.3-6'  }}đ</a></td>
+                <td><a href="">{{showProduct.price | currency: 'USD': true :'1.0-3' }}</a></td>
               </tr>
               <tr>
                 <td class="col-md-3">Giá Flash Sale</td>
-                <td><a href="">{{ showProduct.price * ((100-showProduct.discount)/100) | currency:' ':'symbol':'2.3-6' }}đ</a></td>
+                <td><a href="">{{ showProduct.price * ((100-showProduct.discount)/100) | currency: 'USD': true :'1.0-3'}}</a></td>
               </tr>
               <tr>
                 <td class="col-md-3">Giá tốt Online</td>
-                <td><a href="">{{ showProduct.price * ((100-showProduct.discount)/100) | currency:' ':'symbol':'2.3-6' }}đ</a></td>
+                <td><a href="">{{ showProduct.price * ((100-showProduct.discount)/100) | currency: 'USD': true :'1.0-3'}}</a></td>
               </tr>
               <tr>
                 <td>Khuyến mãi</td>
                 <td>
-                  <span>-5%</span>
+                  <span>{{showProduct.discount}}%</span>
                 </td>
                 <td>
                   Giảm thêm 10% tối đa 200K khi nhập mã VNPAY10 hoặc 5% tối đa 500K khi nhập mã VNPAYQR5 <a href="">Xem

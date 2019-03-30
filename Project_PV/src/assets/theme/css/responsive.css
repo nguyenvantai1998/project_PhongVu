@@ -25,6 +25,12 @@
 	.rowThree span {
 		font-size: 1em;
 	}
+	#clickShowContentNav{
+		left: 0;
+	}
+	#headerBottom-2 .col-md-4 i{
+		left:0;
+	}
 }
 @media screen and (max-width: 1199px) {
 	.headerTop img{
