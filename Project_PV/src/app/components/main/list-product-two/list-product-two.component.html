@@ -1,0 +1,36 @@
+<!-- row four -->
+<div class="rowFour">
+    <div class="owl-carousel owl-theme" *ngIf="showProduct!=0; else showTB">
+      <div 
+        class="item" 
+        *ngFor="let item of showProduct"
+      >
+        <div class="rowProduct-box" [routerLink]="['/detail', item.id]">
+          <span class="salePersen">-{{ item.discount }}%</span>
+          <img src="{{item.images[0]}}" class="img-responsive" alt="Image">
+          <p class="nameProduct">{{ item.title | customProduct: 0 : 20 }}</p>
+          <p class="price">{{ item.price / 100 | currency: 'USD': true :'1.0-3' }}</p>
+          <p class="priceOnline">{{ item.price * ((100-item.discount)/100) | currency: 'USD': true :'1.0-3' }}</p>
+          <p class="start">
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star-half-alt"></i>
+          </p>
+          <p class="gifts">
+            <i class="fas fa-gifts"></i>
+          </p>
+          <div class="meter">
+            <i class="fas fa-carrot"></i>
+            <span>Còn lại: {{item.quantity < 2 ? 'Sắp hết' : item.quantity }}</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <ng-template #showTB>
+      <h1 class="text-center">Chưa tìm thấy sản phẩm nào</h1>
+    </ng-template>
+    
+  </div><!-- /row four -->

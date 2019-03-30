@@ -1,0 +1,4 @@
+.nav-treeview .nav-item .nav-link:focus{
+    color: #fff;
+    background-color: #007bff;
+}

@@ -1,0 +1,194 @@
+<ngx-spinner
+  bdColor="black"
+  size="medium"
+  color="#fff"
+  type="ball-triangle-path">
+ <p style="font-size: 20px; color: white">Loading...</p>
+</ngx-spinner>
+<!-- headerDetail -->
+<div id="headerDetail">
+  <app-header></app-header>
+</div><!-- /headerDetail -->
+
+<!-- bannerNav Detail, Cart, Check -->
+<div id="bannerNavDC" class="bannerNav-bannerNavOne bannerNavH2">
+    <div class="bannerNavH2BG">
+      <div class="container container-bannerNavDC">
+        <div class="col-lg-2 col-md-3 col-sm-3  bannerNav-left">
+            <app-navigation></app-navigation>
+        </div>
+      </div>
+    </div>
+</div><!-- /bannerNav Detail, Cart, Check -->
+
+<!-- main -->
+<div id="main">
+  <div class="container">
+    <div class="rowTitleLink-detail">
+      <a routerLink="/index">Trang chủ</a> / <a>chi tiết sản phẩm</a>
+    </div>
+
+    <!-- row product detail -->
+    <div class="container-fluid rowProductDetail" *ngIf="showProduct">
+      <div class="col-md-4 rowProductDetail-left">
+        <div class="row rowTabImgDetail">
+          <div *ngFor="let item of showProduct.images | slice:0:5">
+            <img src="{{item}}" class="img-responsive tabImgDetail" alt="Image">
+          </div>
+        </div>
+        <div class="row rowButtonTabImgDetail">
+          <button 
+            type="button" 
+            class="btn btn-default col-md-2 buttonTabImgDetail"
+            *ngFor="let item of showProduct.images | slice:0:5"
+          >
+            <img src="{{item}}" class="img-responsive" alt="Image">
+          </button>
+        </div>
+
+        <div class="descriptionDetailProduct">
+          <h3>Mô tả: {{showProduct.description}}</h3>
+          <h4>Tên sản phẩm: {{showProduct.title}}</h4>
+          <p>
+            - Kích thước: 49" 
+            - Độ phân giải: 1920 x 1080 ( Full HD ) 
+            - Hệ điều hành: Android 
+            - Kết nối mạng: LAN; WiFi 
+            - Cổng xuất hình: 4 x HDMI
+          </p>
+        </div>	
+      </div>
+
+      <div class="col-md-8 rowProductDetail-right">
+        <div class="rowDetail-1">
+          <h2>{{showProduct.title}}</h2>
+          <p>SKU: {{showProduct.sku}}</p>
+          <div class="evaluate">
+            <span>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star-half-alt"></i>
+            </span>
+            <span>5</span>
+            <span>
+              <button type="button" class="btn btn-default">Xem đánh giá</button>
+            </span>
+          </div>
+        </div>
+
+        <div class="container-fluid rowDetail-2">
+          <div class="col-md-4">
+            <div class="flash-sale">
+              <div>
+                <i class="fas fa-fire"></i>
+              </div>
+              <div>{{showProduct.status}}</div>
+            </div>
+          </div>
+
+          <div class="col-md-3">
+            <div class="meter">
+              <i class="fas fa-carrot"></i>
+              <span>Còn lại: {{showProduct.quantity}}</span>
+            </div>
+          </div>
+
+          <div class="col-md-5">
+            Thời gian còn lại: {{showProduct.updatedAt - showProduct.createdAt}} ngày
+          </div>
+        </div>
+
+        <div class="rowDetail-3">
+          <table class="table">
+            <tbody>
+              <tr>
+                <td class="col-md-3">Giá bán lẻ</td>
+                <td><a href="">{{showProduct.price | currency:' ':'symbol':'2.3-6'  }}đ</a></td>
+              </tr>
+              <tr>
+                <td class="col-md-3">Giá Flash Sale</td>
+                <td><a href="">{{ showProduct.price * ((100-showProduct.discount)/100) | currency:' ':'symbol':'2.3-6' }}đ</a></td>
+              </tr>
+              <tr>
+                <td class="col-md-3">Giá tốt Online</td>
+                <td><a href="">{{ showProduct.price * ((100-showProduct.discount)/100) | currency:' ':'symbol':'2.3-6' }}đ</a></td>
+              </tr>
+              <tr>
+                <td>Khuyến mãi</td>
+                <td>
+                  <span>-5%</span>
+                </td>
+                <td>
+                  Giảm thêm 10% tối đa 200K khi nhập mã VNPAY10 hoặc 5% tối đa 500K khi nhập mã VNPAYQR5 <a href="">Xem
+                    chi tiết tại đây</a>
+                </td>
+              </tr>
+              <tr>
+                <td>Vận chuyển</td>
+                <td>
+                  <span><i class="fas fa-shipping-fast"></i></span>
+                </td>
+                <td>
+                  Miễn phí vận chuyển(với đơn hàng trên 500.000đ)
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="rowDetail-4">
+          <button type="button" class="btn btn-danger btn-muaNgay">Mua ngay</button>
+          <button type="button" class="btn btn-default btn-addToCart" (click)="addToCart(showProduct._id)">
+            <i class="fas fa-shopping-cart"></i>
+            Thêm vào giỏ hàng
+          </button>
+          <button type="button" class="btn btn-default pull-right btn-chatNgay">
+            <i class="far fa-comment-dots"></i>
+            Chat ngay
+          </button>
+        </div>
+
+        <div class="rowDetail-5">
+          <div role="tabpanel">
+            <!-- Nav tabs -->
+            <ul class="nav nav-tabs" role="tablist">
+              <li role="presentation" class="active col-md-4">
+                <a href="#khuyenmai" aria-controls="home" role="tab" data-toggle="tab">Khuyến mãi hấp dẫn</a>
+              </li>
+              <li role="presentation" class="col-md-4">
+                <a href="#thuonghieu" aria-controls="tab" role="tab" data-toggle="tab">Thương hiệu</a>
+              </li>
+              <li role="presentation" class="col-md-4">
+                <a href="#binhluan" aria-controls="tab" role="tab" data-toggle="tab">Đánh giá & Bình luận</a>
+              </li>
+            </ul>
+
+            <!-- Tab panes -->
+            <div class="tab-content">
+              <div role="tabpanel" class="tab-pane active" id="khuyenmai">
+                <h5>Quà tặng kèm khi mua sản phẩm:</h5>
+                <p>Khung mâm nghiêng từ 37" - 65" M65N</p>
+              </div>
+              <div role="tabpanel" class="tab-pane" id="thuonghieu">
+                <h5>Giới thiệu về Sony</h5>
+                <p>Sony được thành lập từ những năm 1946 tại Nhật Bản. Sony là một trong những thương hiệu toàn cầu nổi
+                  tiếng nhất về điện tử tiêu dùng nhờ vào những sáng tạo đột phá mang tính cách mạng và chất lượng sản
+                  phẩm. Các sản phẩm của Sony nổi bật như: Tivi, laptop ,tai nghe, loa,.. kết hợp giữa chất lượng sản
+                  phẩm-công nghệ hàng đầu, kiểu dáng thiết kế độc đáo luôn chiếm trọn lòng tin của người dùng. Xem các
+                  sản phẩm khác của Sony</p>
+              </div>
+              <div role="tabpanel" class="tab-pane" id="binhluan">
+                <h5>Đánh giá</h5>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div><!-- /row product detail -->
+  </div>
+</div><!-- /main -->
+
+
+<app-footer></app-footer>

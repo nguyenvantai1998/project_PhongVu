@@ -1,0 +1,71 @@
+<div id="bg-login">
+  <div class=" w3l-login-form">
+    <h2>Login Admin</h2>
+    <form 
+      (ngSubmit)="onSubmit(email.value, password.value)" 
+      #templateForm="ngForm"
+    >
+      <div class=" w3l-form-group">
+        <label>Email:</label>
+        <div class="group">
+          <i class="fas fa-user"></i>
+          <input 
+            type="text" 
+            class="form-control" 
+            placeholder="Email" 
+            name="txtEmail" 
+            [(ngModel)]="login['email']" 
+            #email="ngModel"
+            required pattern="[a-zA-Z0-9,-_]{1,}@[a-zA-Z.-]{2,}[.]{1}[a-zA-Z]{2,}" 
+          />
+        </div>
+        <!-- show error email-->
+        <div class="showErrorLogin">
+          <span 
+            class="label label-info"
+            *ngIf="(templateForm.submitted && email.pristine) || (email.touched && email.errors?.required)"
+          >Email is required !
+          </span>
+          <span 
+            class="label label-info"
+            *ngIf="email.errors?.pattern && email.dirty"
+          >Email invalid!
+          </span>
+        </div>
+      </div>
+      <div class=" w3l-form-group">
+        <label>Password:</label>
+        <div class="group">
+          <i class="fas fa-unlock"></i>
+          <input 
+            type="password" 
+            class="form-control" 
+            placeholder="Password" 
+            name="txtPassword" 
+            [(ngModel)]="login['password']" 
+            #password="ngModel"
+            required minlength="5" 
+          />
+        </div>
+        <!-- show error password-->
+        <div class="showErrorLogin">
+          <span 
+            class="label label-info"
+            *ngIf="(templateForm.submitted && password.pristine) || (password.touched && password.errors?.required)"
+          >Password is required !
+          </span>
+          <span 
+            class="label label-info"
+            *ngIf="password.errors?.minlength && password.touched && password.dirty"
+          >Minlength password is 5 character!
+          </span>
+        </div>
+      </div>
+      <div class="forgot">
+        <a href="">Forgot Password?</a>
+        <p><input type="checkbox">Remember Me</p>
+      </div>
+      <button type="submit" class="btn-LoginAD">Login</button>
+    </form>
+  </div>
+</div>

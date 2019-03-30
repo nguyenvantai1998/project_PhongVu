@@ -1,0 +1,167 @@
+<ngx-spinner
+  bdColor="black"
+  size="medium"
+  color="#fff"
+  type="ball-triangle-path">
+ <p style="font-size: 20px; color: white">Loading...</p>
+</ngx-spinner>
+<!-- header -->
+<div id="headerHome">
+  <app-header></app-header>
+</div><!-- header -->
+
+<!-- bannerNav -->
+<div id="bannerNav" class="bannerNav-bannerNavOne">
+  <div class="container">
+    <div class="col-lg-2 col-md-3 col-sm-3 bannerNav-left">
+      <app-navigation></app-navigation>
+    </div>
+
+    <div class="col-lg-7 col-md-9 col-sm-9 bannerNav-center">
+      <app-banner-slider></app-banner-slider>
+    </div>
+
+    <div class="col-lg-3 col-md-12 col-sm-12 bannerNav-right">
+      <div class="row">
+        <app-banner-right></app-banner-right>
+      </div>
+    </div>
+  </div>
+</div><!-- /bannerNav -->
+
+<!-- bannerNav home -->
+<div id="bannerNavH2" class="bannerNav-bannerNavOne bannerNavH2">
+    <div class="bannerNavH2BG">
+      <div class="container">
+        <div class="col-lg-2 col-md-3 col-sm-3  bannerNav-left">
+            <app-navigation></app-navigation>
+        </div>
+      </div>
+    </div>
+</div><!-- /bannerNav home -->
+
+
+
+<!-- main -->
+<div id="main">
+  <div class="container">
+    <!-- row one -->
+    <div class="rowOne">
+      <app-marquee></app-marquee>
+    </div><!-- /row one -->
+
+    <!-- row two -->
+    <div class="rowTwo">
+      <div class="col-md-2 rowTwo-left"
+        style="background-image: url('./../../../assets/theme/images/product/san_tv_gia_me_ly (1).png')">
+        <p>Xem tất cả</p>
+      </div>
+
+      <div class="col-md-10 rowTwo-right">
+        <app-list-product-one></app-list-product-one>
+      </div>
+    </div><!-- /row two -->
+
+    <!-- row three -->
+    <div class="container-fluid rowThree">
+      <ul>
+        <li class="col-md-2 col-sm-4">
+          <i class="fas fa-business-time"></i>
+          <span>Giờ vàng giá sốc</span>
+        </li>
+        <li class="col-md-2 col-sm-0"></li>
+        <li role="presentation" class="active col-md-2 col-sm-2">
+          <a href="#activeListProduct" aria-controls="home" role="tab" data-toggle="tab">
+            <h3>11:00</h3>
+            <p>Đang diễn ra</p>
+          </a>
+        </li>
+        <li role="presentation" class="col-md-2 col-sm-2">
+          <a href="#tab1" aria-controls="tab" role="tab" data-toggle="tab">
+            <h3>12:00</h3>
+            <p>Sắp diễn ra</p>
+          </a>
+        </li>
+        <li role="presentation" class="col-md-2 col-sm-2">
+          <a href="#tab2" aria-controls="home" role="tab" data-toggle="tab">
+            <h3>13:00</h3>
+            <p>Sắp diễn ra</p>
+          </a>
+        </li>
+        <li role="presentation" class="col-md-2 col-sm-2">
+          <a href="#tab3" aria-controls="tab" role="tab" data-toggle="tab">
+            <h3>12:00</h3>
+            <p>Ngày mai</p>
+          </a>
+        </li>
+      </ul>
+    </div><!-- /row three -->
+
+    <!-- Tab list product type row four-->
+    <div id="tabListProductType" class="tab-content">
+      <div role="tabpanel" class="tab-pane active" id="activeListProduct">
+          <app-list-product-two></app-list-product-two>
+      </div>
+      <div role="tabpanel" class="tab-pane" id="tab1">
+          <app-list-product-two-tab1></app-list-product-two-tab1>
+      </div>
+      <div role="tabpanel" class="tab-pane" id="tab2">
+          <app-list-product-two-tab2></app-list-product-two-tab2>
+      </div>
+
+      <div role="tabpanel" class="tab-pane" id="tab3">
+          <app-list-product-two-tab3></app-list-product-two-tab3>
+      </div>
+    </div><!-- /Tab list product type row four -->
+
+    <!-- row title -->
+    <div class="rowTitle">
+      <h2>Tivi giá tốt - chốt liền tay</h2>
+      <p>Đừng vội mua TV nếu chưa xem giá tại Phong Vũ</p>
+    </div><!-- /row title -->
+
+    <!-- row five -->
+    <app-list-product-three></app-list-product-three>
+    <!-- /row five -->
+
+    <!-- row six -->
+    <app-list-product-four></app-list-product-four>
+    <!-- /row six -->
+
+    <!-- row banner -->
+    <div class="rowBanner">
+      <div>
+        <img src="./../../../assets/theme/images/product/pv-banner-390x190-80cf8.png" class="img-responsive"
+          alt="Image">
+      </div>
+      <div>
+        <img src="./../../../assets/theme/images/product/pv-banner-390x190-39bc6.png" class="img-responsive"
+          alt="Image">
+      </div>
+      <div>
+        <img src="./../../../assets/theme/images/product/pv-banner-390x190-80cf8.png" class="img-responsive"
+          alt="Image">
+      </div>
+    </div><!-- /row banner -->
+
+    <!-- row title 2 -->
+    <div class="rowTitle2">
+      <div>
+        <h3><i class="fas fa-shopping-cart"></i> Hàng mới về</h3>
+      </div>
+
+      <div>
+        <a href="">Xem tất cả ></a>
+      </div>
+    </div><!-- /row title 2 -->
+
+    <!-- row seven -->
+    <div class="rowSeven">
+      <app-list-product-five></app-list-product-five>
+    </div><!-- /row seven -->
+  </div>
+</div><!-- /main -->
+
+<!-- footer -->
+<app-footer></app-footer>
+<!-- /footer -->

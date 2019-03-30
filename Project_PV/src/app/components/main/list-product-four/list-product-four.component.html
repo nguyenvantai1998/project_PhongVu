@@ -1,0 +1,39 @@
+<div class="rowSix">
+  <div class="rowSix-left">
+    <h3>Bạn đang tìm tv nào?</h3>
+    <ul class="rowSix-nav">
+        <li class="liActive">Tất cả</li>
+        <li>Màn hình cong</li>
+        <li>UHD 4K TV</li>
+        <li>QLED/OLED TV</li>
+        <li>Smart TV</li>
+        <li>Internet TV</li>
+        <li>LCD/LED TV</li>
+    </ul>
+    <a href="">Xem tất cả ></a>
+  </div>
+
+  <div class="rowSix-right">
+    <div 
+      class="rowProduct-box"
+      *ngFor="let item of showProduct | slice:0:4"
+      [routerLink]="['/detail', item.id]"
+    >
+      <span class="salePersen">-{{ item.discount }}%</span>
+      <img src="{{item.images[0]}}" class="img-responsive" alt="Image">
+      <p class="nameProduct">{{ item.title | customProduct: 0 : 20 }}</p>
+      <p class="price">{{ item.price | currency:' ':'symbol':'2.3-6' }}đ</p>
+      <p class="priceOnline">{{ item.price * ((100-item.discount)/100) | currency:' ':'symbol':'2.3-6' }}đ</p>
+      <p class="start">
+        <i class="fas fa-star"></i>
+        <i class="fas fa-star"></i>
+        <i class="fas fa-star"></i>
+        <i class="fas fa-star"></i>
+        <i class="fas fa-star-half-alt"></i>
+      </p>
+      <p class="gifts">
+        <i class="fas fa-gifts"></i>
+      </p>
+    </div>
+  </div>
+</div>

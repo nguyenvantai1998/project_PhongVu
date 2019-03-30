@@ -1,0 +1,20 @@
+<ul class="navPrimaryOne">
+  <li *ngFor="let item of category | slice:0:14">{{item.name}}
+    <div class="content-nav">
+      <div class="contentNav-list">
+        <div class="row" *ngFor="let items of item.sub_category">
+          <div class="col-lg-2 col-md-2 col-sm-3">
+            {{ items.name }} >
+          </div>
+          <div class="col-lg-6 col-md-9 col-sm-9">
+            <div>Dưới 44 inch</div>
+            <div>44 đến 49 inch</div>
+            <div>50 đến 59 inch</div>
+            <div>60 đến 69 inch</div>
+            <div>Trên 69 inch</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </li>
+</ul>

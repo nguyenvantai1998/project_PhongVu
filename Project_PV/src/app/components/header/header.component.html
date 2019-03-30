@@ -1,0 +1,149 @@
+<!-- header -->
+<div id="header" class="header-headerOne FormatHeader">
+  <div class="container-fluid">
+    <!-- header top -->
+    <div class="headerTop">
+      <div class="container">
+        <div class="col-lg-2 col-md-2 col-sm-2 col-xs-12" routerLink="/index">
+          <img src="./../../../assets/theme/images/product/big-lunar-new-year-logo.png" id="logoOne"
+            class="img-responsive" alt="Image">
+          <img src="./../../../assets/theme/images/product/big-lunar-new-year-logo.png" id="logoTwo"
+            class="img-responsive" alt="Image">
+        </div>
+        <div class="col-lg-10 col-md-10 col-sm-10 col-xs-12">
+          <div class="col-lg-4 col-md-12 col-sm-12 col-xs-12 headerTop-left">
+            <input type="search" name="txtSearch" class="form-control"
+              placeholder="Nhập tên sản phẩm, mã sản phẩm, từ khóa cần tìm...">
+          </div>
+          <div class="col-lg-8 col-md-12 col-sm-12 col-xs-12 headerTop-right">
+            <div class="col-lg-3 col-md-3 col-sm-3 col-xs-6">
+              <div class="headerTopRight-item">
+                <span>
+                  <i class="fas fa-percent"></i>
+                </span>
+                <span>
+                  <p>Chương trình</p>
+                  <p>khuyến mãi</p>
+                </span>
+              </div>
+            </div>
+            <div class="col-lg-3 col-md-3 col-sm-3 col-xs-6">
+              <div class="headerTopRight-item" id="loginAD">
+                <span>
+                  <i class="fas fa-user-circle"></i>
+                </span>
+                <span (click)="checkLogin()">
+                  <p>Đăng nhập</p>
+                  <p>Admin</p>
+                </span>
+              </div>
+            </div>
+            <div class="col-lg-3 col-md-3 col-sm-3 col-xs-6">
+              <div class="headerTopRight-item">
+                <span>
+                  <i class="fas fa-store"></i>
+                </span>
+                <span>
+                  <p>Kiểm tra</p>
+                  <p>đơn hàng</p>
+                </span>
+              </div>
+            </div>
+            <div class="col-lg-3 col-md-3 col-sm-3 col-xs-6">
+              <div class="headerTopRight-item" routerLink="/cart">
+                <span class="cart">
+                  <i class="fas fa-shopping-cart"></i>
+                </span>
+                <span *ngIf="quantityProductByCart != ''">{{quantityProductByCart}} new</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div><!-- /header top -->
+
+    <!-- headerBottom 1 -->
+    <div id="headerBottom-1" class="headerBottom">
+      <div class="container">
+        <div class="col-md-4" id="iconShowNavPrimary">
+					<h3 id="clickShowContentNav"><i class="fas fa-bars"></i></h3>
+				</div>
+
+        <div class="col-lg-8 col-md-10 col-sm-12 col-xs-12 pull-right">
+          <div>
+            <i class="fas fa-angle-down"></i>
+            <span>Sản phẩm vừa xem</span>
+          </div>
+          <div>
+            <i class="fas fa-hospital"></i>
+            <span>Hệ thống Showroom</span>
+          </div>
+          <div>
+            <i class="fas fa-phone-volume"></i>
+            <span>1900 1835</span>
+          </div>
+          <div>
+            <i class="fab fa-whmcs"></i>
+            <span>Kiểm tra bảo hành</span>
+          </div>
+          <div>
+            <i class="fas fa-bell"></i>
+            <span>Thông báo</span>
+          </div>
+          <div>
+            <i class="fas fa-desktop"></i>
+            <span>Xây dựng cấu hình</span>
+          </div>
+        </div>
+      </div>
+    </div><!-- /headerBottom 1 -->
+
+    <!-- headerBottom 2-->
+    <div id="headerBottom-2" class="headerBottom headerBottomDetail">
+      <div class="container">
+        <div class="col-md-4 pull-left">
+          <i class="fas fa-bars" id="showNavList"></i>
+        </div>
+
+        <div class="col-lg-8 col-md-10 col-sm-12 col-xs-12 pull-right">
+          <div>
+            <i class="fas fa-angle-down"></i>
+            <span>Sản phẩm vừa xem</span>
+          </div>
+          <div>
+            <i class="fas fa-hospital"></i>
+            <span>Hệ thống Showroom</span>
+          </div>
+          <div>
+            <i class="fas fa-phone-volume"></i>
+            <span>1900 1835</span>
+          </div>
+          <div>
+            <i class="fab fa-whmcs"></i>
+            <span>Kiểm tra bảo hành</span>
+          </div>
+          <div>
+            <i class="fas fa-bell"></i>
+            <span>Thông báo</span>
+          </div>
+          <div>
+            <i class="fas fa-desktop"></i>
+            <span>Xây dựng cấu hình</span>
+          </div>
+        </div>
+      </div>
+    </div><!-- /headerBottom 2-->
+  </div>
+</div><!-- /header -->
+
+<div class="clearfix" id="clearfix"></div>
+
+<!-- formLogin admin -->
+<div class="FormLoginAD">
+  <div class="container">
+    <div class="FormLoginAD-box">
+      <button type="button" class="btn btn-default pull-right" id="btnCloseLogin">X</button>
+      <app-user></app-user>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,49 @@
+<div class="row">
+  <div class="col-md">
+    <!-- list Order -->
+    <table class="table table-hover text-center">
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Status</th>
+          <th>description</th>
+          <th>Buyer</th>
+          <th>Detail</th>
+          <th>Total</th>
+          <th>Action</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let item of listOrder.docs | paginate:{ itemsPerPage:10, currentPage: p}">
+          <td>{{item._id}}</td>
+          <td><button type="button" class="btn btn-success" (click)="onCheckComplete(item._id)"
+              [disabled]="onSuccess(item.status)">SUCCESS</button> &nbsp;
+            <button type="button" class="btn btn-danger" (click)="onCheckPending(item._id)"
+              [disabled]="!onSuccess(item.status)">PENDING</button></td>
+          <td>{{item.description}}</td>
+          <td>
+            <p>{{item.buyer.name}}</p>
+            <p>{{item.buyer.phone}}</p>
+          </td>
+          <td>
+            <p *ngFor="let items of item.products"> {{items}}</p>
+          </td>
+          <td>{{item.total_amount|currency:' ':'symbol':'2.3-6' }}</td>
+          <td>
+            <button type="button" class="btn btn-primary" [routerLink]="['/admin/order/view/',item.id]">
+              <div class="glyphicon glyphicon-search"></div>
+            </button></td>
+        </tr>
+      </tbody>
+    </table><!-- list product -->
+
+    <div class="row">
+      <pagination-controls 
+        (pageChange)="p = $event" 
+        maxSize="7" 
+        previousLabel="Previous" 
+        nextLabel="Next"
+      >
+      </pagination-controls>
+    </div>
+  </div>

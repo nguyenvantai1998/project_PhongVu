@@ -1,0 +1,96 @@
+<!-- Small boxes (Stat box) -->
+<div class="row">
+  <div class="col-lg-3 col-6">
+    <!-- small box -->
+    <div class="small-box bg-info" routerLink="/index">
+      <div class="inner">
+        <h3>...</h3>
+        <p>Home</p>
+      </div>
+      <div class="icon">
+        <i class="ion ion-home"></i>
+      </div>
+      <a href="" class="small-box-footer"><i class="fas fa-undo-alt"></i> Back home</a>
+    </div>
+  </div>
+  <!-- ./col -->
+  <div class="col-lg-3 col-6">
+    <!-- small box -->
+    <div class="small-box bg-success">
+      <div class="inner">
+        <h3>53<sup style="font-size: 20px">%</sup></h3>
+
+        <p>Bounce Rate</p>
+      </div>
+      <div class="icon">
+        <i class="ion ion-stats-bars"></i>
+      </div>
+      <a href="#" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
+    </div>
+  </div>
+  <!-- ./col -->
+  <div class="col-lg-3 col-6">
+    <!-- small box -->
+    <div class="small-box bg-warning">
+      <div class="inner">
+        <h3>44</h3>
+
+        <p>User Registrations</p>
+      </div>
+      <div class="icon">
+        <i class="ion ion-person-add"></i>
+      </div>
+      <a href="#" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
+    </div>
+  </div>
+  <!-- ./col -->
+  <div class="col-lg-3 col-6">
+    <!-- small box -->
+    <div class="small-box bg-danger" [routerLink]="[ '/admin/category/add' ]">
+      <div class="inner">
+        <h3>...</h3>
+        <p>Add Category</p>
+      </div>
+      <div class="icon">
+        <i class="ion ion-plus"></i>
+      </div>
+      <a class="small-box-footer">Add now... <i class="fas fa-plus"></i></a>
+    </div>
+  </div>
+  <!-- ./col -->
+</div>
+<!-- /.row -->
+
+
+<div class="row">
+  <div class="col-md">
+    <!-- list product -->
+    <h2 class="form-title">List Category</h2>
+    <table class="table table-hover text-center">
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Name</th>
+          <th>Active</th>
+          <th>Sub_Category</th>
+          <th colspan="2">Action</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let item of category;">
+          <td>{{ item._id }}</td>
+          <td>{{ item.name }}</td>
+          <td>{{ item.is_active }}</td>
+          <td><p *ngFor="let items of item.sub_category;">{{ items.name }}</p></td>
+          <td>
+            <button type="button" class="btn btn-primary" [routerLink]="['/admin/category/subcategory/add',item._id]">Add Sub_Category</button>
+          </td>
+          <td>
+            <button type="button" class="btn btn-warning" [routerLink]="['/admin/category/edit',item._id]">Edit</button> &nbsp;
+            <button type="button" class="btn btn-danger" (click)="onDeactive(item._id)">Deactive</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
