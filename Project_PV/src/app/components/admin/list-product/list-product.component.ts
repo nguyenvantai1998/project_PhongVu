@@ -6,6 +6,7 @@ import Swal from 'sweetalert2';
 import { environment } from '@environments/environment.prod';
 
 declare var $: any;
+
 @Component({
   selector: 'app-list-product',
   templateUrl: './list-product.component.html',
@@ -18,7 +19,7 @@ export class ListProductComponent implements OnInit {
   public images = [];
   public dataImage = "";
   public idProduct = "";
-  isShow = false;
+  public qtyProductAc: number; 
 
   constructor(
     private _productService: ProductService,
@@ -32,10 +33,11 @@ export class ListProductComponent implements OnInit {
   loadProduct() {
     this._productService.getAllProduct().subscribe(data => {
       this.product = data;
+      this.qtyProductAc = data.docs.length;
     })
   }
+
   ShowHide(id: string) {
-    this.isShow = !this.isShow;
     this.idProduct = id;
   }
 
@@ -49,17 +51,8 @@ export class ListProductComponent implements OnInit {
     $('.modal-backdrop').hide();
   }
 
-  goUpdateImage(){
+  goUpdateImage() {
     $('.modal-backdrop').removeClass('modal-backdrop');
-  }
-
-  delImage() {
-    this.images.push(this.dataImage);
-    this.ImageObj['images'] = this.images;
-    this._productService.actAddImage(this.idProduct, JSON.stringify(this.ImageObj)).subscribe(data => {
-      this.loadProduct()
-      this.images = [];
-    })
   }
 
   deleteImage(id: string, url: string) {
@@ -76,7 +69,6 @@ export class ListProductComponent implements OnInit {
         const token: string = localStorage.getItem('userToken');
         this.images.push(url);
         this.ImageObj['images'] = this.images;
-        console.log(JSON.stringify(this.ImageObj));
         $.ajax({
           url: `${environment.apiPV}/api/v1/products/${id}/images?`,
           data: JSON.stringify(this.ImageObj),

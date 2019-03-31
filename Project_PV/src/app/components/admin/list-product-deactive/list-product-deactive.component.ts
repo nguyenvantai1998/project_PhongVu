@@ -14,6 +14,8 @@ export class ListProductDeactiveComponent implements OnInit {
   public productDeactive: Products = {};
   public productView: Products[] = [];
   public productsTrail: any;
+  public qtyProductAc: number; 
+
   constructor(
     private productService: ProductService,
     private router: Router
@@ -26,8 +28,10 @@ export class ListProductDeactiveComponent implements OnInit {
   loadProductDeactive() {
     this.productService.getAllProductDeactive().subscribe(data => {
       this.productDeactive = data;
+      this.qtyProductAc = data.docs.length;
     })
   }
+
   //remove item 
   removeById(_id: string) {
     const remove = this.productView.findIndex((e: Products) =>

@@ -3,17 +3,17 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Products } from 'src/app/models/product.model';
 import { environment } from '@environments/environment.prod';
-import { map, catchError } from 'rxjs/operators';
 
 // url
 const urlgetAll = `${environment.apiPV}/api/v1/products/list?is_active=1&limit=1000`;
-const urlgetAllDeactive = `${environment.apiPV}/api/v1/products/list?is_active=0&limit=100`;
+const urlImage = `${environment.apiPV}/api/v1/products`;
+const urlgetAllDeactive = `${environment.apiPV}/api/v1/products/list?is_active=0&limit=1000`;
 const urlAdd = `${environment.apiPV}/api/v1/products/create`;
 const urlDetail = `${environment.apiPV}/api/v1/products/details`;
 const urlEdit = `${environment.apiPV}/api/v1/products/update`;
 const urlDeactive = `${environment.apiPV}/api/v1/products/deactive`;
 const urlActive = `${environment.apiPV}/api/v1/products/active`;
-const urlImage = `${environment.apiPV}/api/v1/products`;
+
 @Injectable({
   providedIn: 'root'
 })
@@ -21,9 +21,10 @@ export class ProductService {
 
   public headers: HttpHeaders;
   public headers2: HttpHeaders;
+
   constructor(private httpClient: HttpClient) {
     this.headers = this.setHeaders();
-    this.headers2 = this.setHeaders2();
+    // this.headers2 = this.setHeaders2();
   }
 
   setHeaders(): HttpHeaders {
@@ -34,17 +35,24 @@ export class ProductService {
     }
     return header.set('Content-Type', 'application/json').set('Authorization', `Bearer ${token}`);
   }
-setHeaders2(): HttpHeaders {
-    const header2 = new HttpHeaders();
-    const token: string = localStorage.getItem('userToken');
-    if (!token) {
-      return header2.set('Content-Type', 'application/x-www-form-urlencoded');
-    }
-    return header2.set('Content-Type', 'application/json').set('Authorization', `Bearer ${token}`);
-  }
+
+  // setHeaders2(): HttpHeaders {
+  //   const header2 = new HttpHeaders();
+  //   const token: string = localStorage.getItem('userToken');
+  //   if (!token) {
+  //     return header2.set('Content-Type', 'application/x-www-form-urlencoded');
+  //   }
+  //   return header2.set('Content-Type', 'application/json').set('Authorization', `Bearer ${token}`);
+  // }
+
   //all product
   getAllProduct(): Observable<any> {
-    return <Observable<any>>this.httpClient.get(urlgetAll);
+    return <Observable<any>> this.httpClient.get(urlgetAll);
+  }
+
+  //Add Images
+  actAddImage(id: string, body): Observable<any> {
+    return this.httpClient.post<any> (`${urlImage}/${id}/images?`, body, { headers: this.headers });
   }
 
   //get detail one product by id
@@ -53,8 +61,8 @@ setHeaders2(): HttpHeaders {
   }
 
   //all product deactive
-  getAllProductDeactive(): Observable<Products> {
-    return <Observable<Products>>this.httpClient.get(urlgetAllDeactive);
+  getAllProductDeactive(): Observable<any> {
+    return <Observable<any>> this.httpClient.get(urlgetAllDeactive);
   }
 
   //get one product by id
@@ -82,9 +90,4 @@ setHeaders2(): HttpHeaders {
     return <Observable<Products>>this.httpClient.put(`${urlActive}/${product['_id']}`, product, { headers: this.headers });
   }
 
-  //Add Images
-  actAddImage(id:string,body): Observable<any>{
-      return this.httpClient.post<any>(`${urlImage}/${id}/images?`,body,{ headers: this.headers });
-  }
-  
 }

@@ -5,23 +5,46 @@
       Back admin
     </button>
     <div class="signup-content">
-      <form id="signup-form" class="signup-form" #frmEditProduct="ngForm" (ngSubmit)="onSubmit(frmEditProduct)">
+      <form 
+        id="signup-form" 
+        class="signup-form" 
+        #frmEditProduct="ngForm" 
+        (ngSubmit)="onSubmit(frmEditProduct)"
+      >
         <h2 class="form-title">Edit Product</h2>
-        <div class="row">
+        <div class="row" *ngIf="product">
           <div class="col-6 col-sm-6 col-md-6 col-lg-6">
             <div class="form-group">
               <label>ID</label>
-              <input type="text" class="form-input" name="txtId" [(ngModel)]="product.id" #id="ngModel" disabled />
+              <input
+                type="text" 
+                class="form-input" 
+                name="txtId" 
+                [(ngModel)]="product._id" 
+                #id="ngModel"
+                disabled 
+              />
             </div>
             <div class="form-group">
               <label>Title</label>
-              <input type="text" class="form-input" name="txtTitle" [(ngModel)]="product.title" #title="ngModel"
-                required />
+              <input 
+                type="text" 
+                class="form-input" 
+                name="txtTitle" 
+                [(ngModel)]="product.title"
+                #title="ngModel"
+                required 
+              />
             </div>
             <div class="form-group">
               <label>Status</label>
-              <select id="my-input" class="custom-select" name="txtStatus" [(ngModel)]="product.status"
-                #status="ngModel">
+              <select 
+                id="my-input" 
+                class="custom-select" 
+                name="txtStatus" 
+                [(ngModel)]="product.status"
+                #status="ngModel"
+              >
                 <option value="Empty" selected>Empty</option>
                 <option value="Pending">Pending</option>
                 <option value="Sales">Sales</option>
@@ -30,8 +53,13 @@
             </div>
             <div class="form-group">
               <label>Category</label>
-              <select id="my-input" class="custom-select" name="txtCategory" [(ngModel)]="product.category"
-                #category="ngModel">
+              <select 
+                id="my-input" 
+                class="custom-select" 
+                name="txtCategory" 
+                [(ngModel)]="product.category"
+                #category="ngModel"
+              >
                 <option value="Screen" selected>Screen</option>
                 <option value="Monitor">Monitor</option>
                 <option value="Mouse">Mouse</option>
@@ -44,19 +72,37 @@
           <div class="col-6 col-sm-6 col-md-6 col-lg-6">
             <div class="form-group">
               <label>Price</label>
-              <input type="text" class="form-input" name="txtPrice" [(ngModel)]="product.price" #price="ngModel"
-                required />
+              <input 
+                type="text" 
+                class="form-input" 
+                name="txtPrice" 
+                [(ngModel)]="product.price" 
+                #price="ngModel"
+                required 
+              />
             </div>
             <div class="form-group">
               <label>Quantity</label>
-              <input type="text" class="form-input" name="txtQuantity" [(ngModel)]="product.quantity"
-                #quantity="ngModel" required />
+              <input 
+                type="text" 
+                class="form-input" 
+                name="txtQuantity" 
+                [(ngModel)]="product.quantity"
+                #quantity="ngModel" 
+                required 
+              />
             </div>
             <div class="form-group">
               <label for="">Discount</label>
-                <select id="my-input" class="custom-select"name="txtDiscount" [(ngModel)]="product.discount" #discount="ngModel">
+                <select 
+                  id="my-input" 
+                  class="custom-select"
+                  name="txtDiscount" 
+                  [(ngModel)]="product.discount" 
+                  #discount="ngModel"
+                >
                   <option value="0" selected>0%</option>
-                  <option value="5" selected>5%</option>
+                  <option value="5">5%</option>
                   <option value="10">10%</option>
                   <option value="15">15%</option>
                   <option value="20">20%</option>
@@ -72,12 +118,22 @@
             </div>
             <div class="form-group">
               <label>UpdatedAt</label>
-              <input type="text" class="form-input" name="day" disabled [(ngModel)]="jstoday">
+              <input 
+                type="text" 
+                class="form-input" 
+                name="day" 
+                disabled 
+                [(ngModel)]="jstoday"
+              >
             </div>
           </div>
           <div class="col-12 col-sm-12 col-md-12 col-lg-12">
             <div class="form-group">
-              <button type="submit" class="form-submit btn-block">Edit</button>
+              <button 
+                type="submit" 
+                class="form-submit btn-block"
+              >Edit
+              </button>
             </div>
           </div>
         </div>

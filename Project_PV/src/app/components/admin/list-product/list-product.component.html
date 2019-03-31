@@ -17,10 +17,10 @@
   <div class="col-lg-3 col-6">
     <!-- small box -->
     <div class="small-box bg-success">
-      <div class="inner">
-        <h3>53<sup style="font-size: 20px">%</sup></h3>
+      <div class="inner" *ngIf="qtyProductAc">
+        <h3>{{qtyProductAc}}<sup style="font-size: 20px">SP</sup></h3>
 
-        <p>Bounce Rate</p>
+        <p>Quantity Products Active</p>
       </div>
       <div class="icon">
         <i class="ion ion-stats-bars"></i>
@@ -83,11 +83,22 @@
       <td>{{ item.title }}</td>
       <td>
         <div class="row">
-          <div class="thumbnail col-md-4" *ngFor="let items of item.images" (click)="deleteImage(item.id,items)">
+          <div 
+            class="thumbnail col-md-4" 
+            *ngFor="let items of item.images" 
+            (click)="deleteImage(item.id,items)"
+          >
               <img class="img-responsive" src="{{ items }}">    
           </div>
         </div>
-        <button class="btn"><div class="glyphicon glyphicon-plus-sign" (click)="ShowHide(item.id)" data-toggle="modal" href='#modal-id'></div></button>
+        <button class="btn">
+          <div 
+            class="glyphicon glyphicon-plus-sign" 
+            (click)="ShowHide(item.id)" 
+            data-toggle="modal" 
+            href='#modal-id'></div>
+        </button>
+
         <div class="modal fade" id="modal-id">
           <div class="modal-dialog">
             <div class="modal-content">
@@ -95,14 +106,25 @@
                 <h4 class="modal-title" style="font-size:2.5em;">Add Image</h4>
               </div>
               <div class="modal-body">
-                <!-- list product -->
-                <form class="form-inline" *ngIf="isShow">
+                <form class="form-inline">
                     <div class="form-group col-md-12" style="padding:0;">
                       <label for="inputPassword2" class="sr-only">URL</label>
                       <input style="width:100%" type="text" class="form-control" placeholder="URL Image" name="UrlImage" [(ngModel)]="dataImage">
                     </div>
-                    <button  style="width:100%;margin-top:1em;" type="submit" (click)="addImage()" class="btn btn-primary mb-2">Add Image</button>
-                    <button type="button" class="btn btn-danger" routerLink="/admin/upload" (click)="goUpdateImage()">Go Upload Image</button>
+                    <button  
+                      style="width:100%;margin-top:1em;" 
+                      type="submit" 
+                      (click)="addImage()" 
+                      class="btn btn-primary mb-2"
+                    >Add Image
+                    </button>
+                    <button 
+                      type="button" 
+                      class="btn btn-danger" 
+                      routerLink="/admin/upload" 
+                      (click)="goUpdateImage()"
+                    >Go Upload Image
+                    </button>
                 </form>
               </div>
               <div class="modal-footer">
@@ -119,8 +141,20 @@
       <td>{{ item.category }}</td>
       <td>{{ item.discount }}</td>
       <td>
-        <button type="button" class="btn btn-warning" [routerLink]="['/admin/edit',item.id]" style="width:100%;">Edit</button>
-        <button type="button" class="btn btn-danger" (click)="onDeactive(item.id)"  style="width:100%;margin-top:5px;">Deactive</button>
+        <button 
+          type="button" 
+          class="btn btn-warning" 
+          [routerLink]="['/admin/edit',item.id]" 
+          style="width:100%;"
+        >Edit
+        </button>
+        <button 
+          type="button" 
+          class="btn btn-danger" 
+          (click)="onDeactive(item.id)"
+          style="width:100%;margin-top:5px;"
+        >Deactive
+        </button>
       </td>
     </tr>
   </tbody>

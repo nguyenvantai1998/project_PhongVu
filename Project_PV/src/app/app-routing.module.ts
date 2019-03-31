@@ -33,10 +33,6 @@ const routes: Routes = [
     component: IndexComponent
   },
   {
-      path: 'login',
-      component: UserComponent
-  },
-  {
       path: 'admin',
       component: AdminComponent,
       canActivate: [AuthGuard],

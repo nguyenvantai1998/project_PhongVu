@@ -13,6 +13,7 @@ export class ListOrderComponent implements OnInit{
   public comp = "SUCCESS";
   public orderComplete = {"status": "success"}
   public orderWait = {"status": "pending"}
+  public qtyProductAc: number;
   
   constructor(
     private orderService: OrderService,
@@ -24,7 +25,7 @@ export class ListOrderComponent implements OnInit{
   loadOrderList() {
     this.orderService.getAllList().subscribe(data => {
       this.listOrder = data;
-      console.log(this.listOrder)
+      this.qtyProductAc = data.docs.length;
     })
   }
  

@@ -10,6 +10,7 @@ import { CategoryService } from 'src/app/services/category/category.service';
 export class ListCategoryComponent implements OnInit{
 
   public category: Category;
+  public qtyProductAc: number;
 
   constructor(
     private categoryService: CategoryService
@@ -22,6 +23,7 @@ export class ListCategoryComponent implements OnInit{
   loadCategory() {
     this.categoryService.getActiveCategory().subscribe(data => {
       this.category = data;
+      this.qtyProductAc = data.length;
     })
   }
 

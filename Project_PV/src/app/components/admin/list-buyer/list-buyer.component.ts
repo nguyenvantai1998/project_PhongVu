@@ -8,6 +8,7 @@ import { Buyers } from 'src/app/models/buyers.model';
 })
 export class ListBuyerComponent implements OnInit{
   public listBuyer: Buyers= {};
+  public qtyProductAc: number;
 
   constructor(
     private checkoutService: CheckoutService,
@@ -18,6 +19,7 @@ export class ListBuyerComponent implements OnInit{
   loadBuyerList() {
     this.checkoutService.getListBuyer().subscribe(data => {
       this.listBuyer = data['docs'];
+      this.qtyProductAc = data['docs'].length;
     })
   }
 }

@@ -40,8 +40,6 @@
     </div>
 </div><!-- /bannerNav home -->
 
-
-
 <!-- main -->
 <div id="main">
   <div class="container">
@@ -72,30 +70,31 @@
         <li class="col-md-2 col-sm-0"></li>
         <li role="presentation" class="active col-md-2 col-sm-2">
           <a href="#activeListProduct" aria-controls="home" role="tab" data-toggle="tab">
-            <h3>11:00</h3>
-            <p>Đang diễn ra</p>
+            <h3>{{Happenning.time}}</h3>
+            <p>{{Happenning.content}}</p>
           </a>
         </li>
         <li role="presentation" class="col-md-2 col-sm-2">
           <a href="#tab1" aria-controls="tab" role="tab" data-toggle="tab">
-            <h3>12:00</h3>
-            <p>Sắp diễn ra</p>
+            <h3>{{Upcoming.time}}</h3>
+            <p>{{Upcoming.content}}</p>
           </a>
         </li>
         <li role="presentation" class="col-md-2 col-sm-2">
           <a href="#tab2" aria-controls="home" role="tab" data-toggle="tab">
-            <h3>13:00</h3>
-            <p>Sắp diễn ra</p>
+            <h3>{{Upcoming2.time}}</h3>
+            <p>{{Upcoming.content}}</p>
           </a>
         </li>
         <li role="presentation" class="col-md-2 col-sm-2">
           <a href="#tab3" aria-controls="tab" role="tab" data-toggle="tab">
-            <h3>12:00</h3>
-            <p>Ngày mai</p>
+            <h3>{{Tomorrow.time}}</h3>
+            <p>{{Tomorrow.content}}</p>
           </a>
         </li>
       </ul>
-    </div><!-- /row three -->
+    </div>
+    <!-- /row three -->
 
     <!-- Tab list product type row four-->
     <div id="tabListProductType" class="tab-content">
@@ -116,8 +115,8 @@
 
     <!-- row title -->
     <div class="rowTitle">
-      <h2>Tivi giá tốt - chốt liền tay</h2>
-      <p>Đừng vội mua TV nếu chưa xem giá tại Phong Vũ</p>
+      <h2>{{rowTitle.title}}</h2>
+      <p>{{rowTitle.description}}</p>
     </div><!-- /row title -->
 
     <!-- row five -->
@@ -130,16 +129,8 @@
 
     <!-- row banner -->
     <div class="rowBanner">
-      <div>
-        <img src="./../../../assets/theme/images/product/pv-banner-390x190-80cf8.png" class="img-responsive"
-          alt="Image">
-      </div>
-      <div>
-        <img src="./../../../assets/theme/images/product/pv-banner-390x190-39bc6.png" class="img-responsive"
-          alt="Image">
-      </div>
-      <div>
-        <img src="./../../../assets/theme/images/product/pv-banner-390x190-80cf8.png" class="img-responsive"
+      <div *ngFor="let item of rowBanner.images">
+        <img src="./../../../assets/theme/images/product/{{item}}" class="img-responsive"
           alt="Image">
       </div>
     </div><!-- /row banner -->

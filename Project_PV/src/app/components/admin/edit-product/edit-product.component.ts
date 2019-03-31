@@ -12,10 +12,9 @@ import { formatDate } from '@angular/common';
 })
 export class EditProductComponent implements OnInit {
 
-  public image: any;
   public product: Products;
-  today = new Date();
-  jstoday = '';
+  public today = new Date();
+  public jstoday = '';
 
   constructor(
     private _productService: ProductService,
@@ -27,16 +26,6 @@ export class EditProductComponent implements OnInit {
   ngOnInit() {
     this.loadProducts();
     this.jstoday = formatDate(this.today, 'yyyy-MM-ddThh:mm:ss', 'en-VI', '+0700');
-  }
-
-  handleFileInput(event) {
-    const oFReader = new FileReader();
-    const image = event.target.files[0];
-    oFReader.readAsDataURL(image);
-    oFReader.onload = (oFREvent) => {
-      this.product['images'] = oFREvent.target['result'];
-    };
-    this.image = image;
   }
 
   loadProducts() {

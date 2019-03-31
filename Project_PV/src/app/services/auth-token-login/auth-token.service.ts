@@ -39,7 +39,6 @@ export class AuthTokenService {
   }
 
   private errorHandler(error: HttpErrorResponse): Observable<any> {
-    console.log(error);
     if (error.status >= 500) {
       Swal.fire({
         type: 'error',

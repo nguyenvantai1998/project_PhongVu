@@ -37,8 +37,8 @@ export class OrderService {
   }
 
   //all product
-  getAllList(): Observable<Order>{
-    return <Observable<Order>>this.httpClient.get(urlgetListOrder, { headers: this.headers });
+  getAllList(): Observable<any>{
+    return <Observable<any>> this.httpClient.get(urlgetListOrder, { headers: this.headers });
   }
 
   getIdOrderDetail(id: string): Observable<Order> {
